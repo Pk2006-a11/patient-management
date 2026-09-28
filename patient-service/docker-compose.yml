@@ -1,0 +1,40 @@
+services:
+
+  patient-postgres:
+    image: postgres:17
+    container_name: patient-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: patientdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - patient-postgres-data:/var/lib/postgresql/data
+    networks:
+      - patient-network
+
+  patient-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: patient-service-container
+    ports:
+      - "4000:4000"
+    depends_on:
+      - patient-postgres
+    networks:
+      - patient-network
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://patient-postgres:5432/patientdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+
+networks:
+  patient-network:
+
+volumes:
+  patient-postgres-data:
+  

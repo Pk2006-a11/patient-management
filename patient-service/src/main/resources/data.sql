@@ -1,0 +1,22 @@
+INSERT INTO patient (id, name, email, address, date_of_birth, registered_date) VALUES
+('00000000-0000-0000-0000-000000000001', 'Aarav Mehta', 'aarav.mehta@example.com', '12 Lake View Road, Mumbai', '1990-02-14', '2025-01-08'),
+('00000000-0000-0000-0000-000000000002', 'Ananya Sharma', 'ananya.sharma@example.com', '48 Green Park, New Delhi', '1988-07-22', '2025-01-15'),
+('00000000-0000-0000-0000-000000000003', 'Rohan Gupta', 'rohan.gupta@example.com', '7 Park Street, Kolkata', '1995-11-03', '2025-01-21'),
+('00000000-0000-0000-0000-000000000004', 'Isha Patel', 'isha.patel@example.com', '31 Riverfront Avenue, Ahmedabad', '1992-04-18', '2025-02-02'),
+('00000000-0000-0000-0000-000000000005', 'Vikram Singh', 'vikram.singh@example.com', '19 Rose Garden Lane, Jaipur', '1985-09-27', '2025-02-14'),
+('00000000-0000-0000-0000-000000000006', 'Meera Nair', 'meera.nair@example.com', '5 Coconut Grove, Kochi', '1998-01-09', '2025-02-28'),
+('00000000-0000-0000-0000-000000000007', 'Kabir Joshi', 'kabir.joshi@example.com', '82 Hill Road, Pune', '1991-06-30', '2025-03-06'),
+('00000000-0000-0000-0000-000000000008', 'Priya Reddy', 'priya.reddy@example.com', '14 Sunrise Colony, Hyderabad', '1987-12-11', '2025-03-19'),
+('00000000-0000-0000-0000-000000000009', 'Arjun Malhotra', 'arjun.malhotra@example.com', '26 Model Town, Chandigarh', '1993-03-25', '2025-04-01'),
+('00000000-0000-0000-0000-000000000010', 'Neha Iyer', 'neha.iyer@example.com', '63 MG Road, Bengaluru', '1996-08-16', '2025-04-12'),
+('00000000-0000-0000-0000-000000000011', 'Devansh Kapoor', 'devansh.kapoor@example.com', '9 Civil Lines, Lucknow', '1989-10-05', '2025-04-25'),
+('00000000-0000-0000-0000-000000000012', 'Sana Khan', 'sana.khan@example.com', '44 Central Avenue, Bhopal', '1994-05-12', '2025-05-09'),
+('00000000-0000-0000-0000-000000000013', 'Aditya Verma', 'aditya.verma@example.com', '17 Station Road, Patna', '1983-11-29', '2025-05-20'),
+('00000000-0000-0000-0000-000000000014', 'Tara Bose', 'tara.bose@example.com', '3 Heritage Lane, Bhubaneswar', '1999-02-21', '2025-06-03'),
+('00000000-0000-0000-0000-000000000015', 'Nikhil Das', 'nikhil.das@example.com', '71 Ashok Nagar, Guwahati', '1990-07-08', '2025-06-17'),
+('00000000-0000-0000-0000-000000000016', 'Simran Kaur', 'simran.kaur@example.com', '28 Mall Road, Amritsar', '1997-09-14', '2025-07-02'),
+('00000000-0000-0000-0000-000000000017', 'Manish Rao', 'manish.rao@example.com', '55 Beach Road, Visakhapatnam', '1986-01-31', '2025-07-18'),
+('00000000-0000-0000-0000-000000000018', 'Aditi Kulkarni', 'aditi.kulkarni@example.com', '11 University Road, Nagpur', '1995-04-07', '2025-08-04'),
+('00000000-0000-0000-0000-000000000019', 'Yash Thakur', 'yash.thakur@example.com', '6 Mountain View, Shimla', '1992-12-19', '2025-08-22'),
+('00000000-0000-0000-0000-000000000020', 'Kavya Menon', 'kavya.menon@example.com', '39 Marina Road, Chennai', '1984-06-02', '2025-09-10')
+ON CONFLICT DO NOTHING;

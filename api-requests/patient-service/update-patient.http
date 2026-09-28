@@ -1,0 +1,12 @@
+### PUT resquest to get create patient
+PUT http://localhost:4000/patients/00000000-0000-0000-0000-000000000001
+Content-type: application/json
+
+{
+  "name": "Pranjal Kundu",
+  "email": "aarav.mehta@example.com",
+  "address": "Mathabhanga",
+  "dateOfBirth": "2006-02-06",
+  "registeredDate": "2026-09-26"
+
+}

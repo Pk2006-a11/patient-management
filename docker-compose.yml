@@ -1,7 +1,7 @@
 services:
 
   # =========================================================
-  # PostgreSQL
+  # PostgreSQL - Patient Service
   # =========================================================
   patient-postgres:
     image: postgres:17
@@ -20,6 +20,31 @@ services:
 
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d patientdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  # =========================================================
+  # PostgreSQL - Auth Service
+  # =========================================================
+  auth-service-db:
+    image: postgres:17
+    container_name: auth-service-db
+
+    environment:
+      POSTGRES_DB: authdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5001:5432"
+
+    volumes:
+      - auth-service-db-data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d authdb"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -138,8 +163,61 @@ services:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
 
 
+  # =========================================================
+  # API Gateway
+  # =========================================================
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+
+    container_name: api-gateway
+
+    ports:
+      - "4004:4004"
+
+    depends_on:
+      patient-service:
+        condition: service_started
+
+      billing-service:
+        condition: service_started
+
+      analytics-service:
+        condition: service_started
+
+    environment:
+      SERVER_PORT: 4004
+      AUTH_SERVICE_URL : http://auth-service:4005
+
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+
+    container_name: auth-service-container
+
+
+
+    depends_on:
+      auth-service-db:
+        condition: service_healthy
+
+    environment:
+      SERVER_PORT: 4005
+
+      SPRING_DATASOURCE_URL: jdbc:postgresql://auth-service-db:5432/authdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_SQL_INIT_MODE: always
+      JWT_SECRET: eQLe1SJBUSYigH4hNNVUkn1dQvO6gXkdCSTXNS1Gd15
+
+
 # =========================================================
 # Volumes
 # =========================================================
 volumes:
   patient-postgres-data:
+  auth-service-db-data:

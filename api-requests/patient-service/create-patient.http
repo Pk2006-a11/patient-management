@@ -1,10 +1,10 @@
 ### POST resquest to get create patient
-POST http://localhost:4000/patients
+POST http://localhost:4004/api/patients
 Content-type: application/json
 
 {
   "name": "Pranjal Kundu",
-  "email": "newandnew9969a@e.com",
+  "email": "newandnew789969a@e.com",
   "address": "Mathabhanga",
   "dateOfBirth": "2006-02-06",
   "registeredDate": "2026-09-26"

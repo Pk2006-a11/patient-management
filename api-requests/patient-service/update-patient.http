@@ -1,5 +1,5 @@
 ### PUT resquest to get create patient
-PUT http://localhost:4000/patients/00000000-0000-0000-0000-000000000001
+PUT http://localhost:4004/api/patients/00000000-0000-0000-0000-000000000001
 Content-type: application/json
 
 {
